@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>CloudLaunch | Local Monitor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="CloudLaunch home"><span class="brand-mark">C</span><span>CloudLaunch</span></a>
+      <div class="header-meta"><span class="local-badge"><span class="pulse"></span> LOCAL MACHINE</span><span id="connection" class="connection">Connecting…</span></div>
+    </header>
+
+    <section class="intro">
+      <div><p class="eyebrow">SYSTEM OVERVIEW</p><h1>Your machine,<br class="mobile-break"> at a glance.</h1><p class="subtitle">A live view of the computer running CloudLaunch.</p></div>
+      <div class="updated"><span class="updated-label">LAST UPDATED</span><strong id="last-updated">Waiting for data</strong></div>
+    </section>
+
+    <div id="error-banner" class="error-banner" role="alert" hidden>Metrics are temporarily unavailable. Retrying automatically…</div>
+
+    <section class="metrics-grid" aria-label="Local system metrics">
+      <article class="metric-card" aria-labelledby="cpu-title">
+        <div class="card-heading"><div><p class="metric-kicker">PROCESSOR</p><h2 id="cpu-title">CPU usage</h2></div><span class="metric-icon cpu-icon">⌁</span></div>
+        <div class="metric-value"><strong id="cpu-value">—</strong><span>%</span></div>
+        <div class="meter"><div id="cpu-meter" class="meter-fill blue" style="width:0%"></div></div>
+        <p id="cpu-detail" class="card-foot">Waiting for local metrics</p>
+      </article>
+      <article class="metric-card" aria-labelledby="memory-title">
+        <div class="card-heading"><div><p class="metric-kicker">MEMORY</p><h2 id="memory-title">Memory usage</h2></div><span class="metric-icon memory-icon">▤</span></div>
+        <div class="metric-value"><strong id="memory-value">—</strong><span>%</span></div>
+        <div class="meter"><div id="memory-meter" class="meter-fill violet" style="width:0%"></div></div>
+        <p id="memory-detail" class="card-foot">Waiting for local metrics</p>
+      </article>
+      <article class="metric-card" aria-labelledby="disk-title">
+        <div class="card-heading"><div><p class="metric-kicker">STORAGE</p><h2 id="disk-title">Disk usage</h2></div><span class="metric-icon disk-icon">▱</span></div>
+        <div class="metric-value"><strong id="disk-value">—</strong><span>%</span></div>
+        <div class="meter"><div id="disk-meter" class="meter-fill green" style="width:0%"></div></div>
+        <p id="disk-detail" class="card-foot">Waiting for local metrics</p>
+      </article>
+    </section>
+
+    <section class="status-panel" aria-label="Application status">
+      <div class="status-indicator"><span class="status-dot"></span><div><strong>CloudLaunch API</strong><span id="api-state">Checking application status</span></div></div>
+      <div class="status-item"><span>METRICS SOURCE</span><strong>Local machine</strong></div>
+      <div class="status-item"><span>REFRESH RATE</span><strong>Every 5 seconds</strong></div>
+      <div class="status-item"><span>CPU CORES</span><strong id="cpu-cores">—</strong></div>
+    </section>
+    <footer><span>CloudLaunch <span class="footer-separator">/</span> Phase 1</span><span>Metrics are from this computer, not AWS.</span></footer>
+  </main>
+</body>
+</html>
