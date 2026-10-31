@@ -7,6 +7,8 @@ const elements = {
   errorBanner: document.querySelector("#error-banner"),
   apiState: document.querySelector("#api-state"),
   cpuCores: document.querySelector("#cpu-cores"),
+  metricsSource: document.querySelector("#metrics-source"),
+  metricsSourceBadge: document.querySelector("#metrics-source-badge"),
 };
 
 function formatBytes(bytes) {
@@ -41,6 +43,8 @@ async function refreshDashboard() {
     setMetric("memory", metrics.memory, `${formatBytes(metrics.memory.used_bytes)} of ${formatBytes(metrics.memory.total_bytes)} used`);
     setMetric("disk", metrics.disk, `${formatBytes(metrics.disk.used_bytes)} of ${formatBytes(metrics.disk.total_bytes)} used · ${metrics.disk.path}`);
     elements.cpuCores.textContent = metrics.cpu.cores;
+    elements.metricsSource.textContent = status.metrics_source;
+    elements.metricsSourceBadge.textContent = status.metrics_source.toLocaleUpperCase();
     elements.apiState.textContent = `Running · uptime ${Math.floor(status.uptime_seconds)}s`;
     elements.lastUpdated.textContent = new Date(metrics.timestamp).toLocaleTimeString();
     elements.connection.textContent = "Live";

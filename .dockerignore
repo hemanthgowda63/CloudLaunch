@@ -1,0 +1,13 @@
+.git
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+*.egg-info
+.env
+.env.*
+!.env.example
+.vscode
+.idea
+README.md
