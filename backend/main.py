@@ -7,6 +7,7 @@ the process. They are local system metrics, not AWS CloudWatch metrics.
 from __future__ import annotations
 
 import logging
+import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,6 +22,7 @@ from fastapi.staticfiles import StaticFiles
 BASE_DIR = Path(__file__).resolve().parent.parent
 FRONTEND_DIR = BASE_DIR / "frontend"
 STARTED_AT = time.monotonic()
+METRICS_SOURCE = os.getenv("CLOUDLAUNCH_METRICS_SOURCE", "local machine")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("cloudlaunch")
@@ -44,7 +46,7 @@ def collect_metrics() -> dict[str, Any]:
     memory = psutil.virtual_memory()
     disk = psutil.disk_usage(disk_path)
     return {
-        "source": "local machine",
+        "source": METRICS_SOURCE,
         "timestamp": utc_timestamp(),
         "cpu": {"percent": psutil.cpu_percent(interval=None), "cores": psutil.cpu_count(logical=True)},
         "memory": {
@@ -88,7 +90,7 @@ async def status() -> dict[str, Any]:
     return {
         "application": "CloudLaunch",
         "status": "running",
-        "metrics_source": "local machine",
+        "metrics_source": METRICS_SOURCE,
         "uptime_seconds": round(time.monotonic() - STARTED_AT, 2),
         "timestamp": utc_timestamp(),
     }

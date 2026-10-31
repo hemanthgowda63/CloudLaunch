@@ -1,0 +1,9 @@
+services:
+  cloudlaunch:
+    build: .
+    image: cloudlaunch:local
+    environment:
+      CLOUDLAUNCH_METRICS_SOURCE: "Docker container"
+    ports:
+      - "${CLOUDLAUNCH_PORT:-8000}:8000"
+    restart: unless-stopped
