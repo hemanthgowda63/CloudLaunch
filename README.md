@@ -91,7 +91,7 @@ If PowerShell blocks activation, run the interpreter directly:
 
 The frontend requests metrics and status every five seconds. If a request fails, it displays an error banner and retries on the next interval.
 
-## Dependencies
+ Dependencies
 
 Install Python dependencies with:
 
